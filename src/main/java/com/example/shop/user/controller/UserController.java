@@ -64,7 +64,11 @@ public class UserController {
             UserSessionDto user = userService.login(loginDto);
 
             // 2. 성공 시 세션 저장 후 메인 이동
-            session.setAttribute("loginMember", user);
+            session.setAttribute("userId", user.getUserId());
+            session.setAttribute("loginId", user.getLoginId());
+            session.setAttribute("userName", user.getUserName());
+            session.setAttribute("email", user.getEmail());
+
             return "redirect:/";
 
         } catch (IllegalArgumentException e) {
