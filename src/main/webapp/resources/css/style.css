@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+/* Common Styles */
+@import url("common/base.css");
+@import url("common/header.css");
+@import url("common/footer.css");
+
+/* Page Specific Styles */
+@import url("main.css");

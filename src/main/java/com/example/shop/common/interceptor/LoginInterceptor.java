@@ -13,9 +13,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
         // 1. 세션에서 로그인 정보 가져오기
         HttpSession session = request.getSession();
-        Object loginUser = session.getAttribute("loginUser");
+        // loginUser 대신 userId가 있는지 확인
+        Object userId = session.getAttribute("userId");
 
-        if (loginUser == null) {
+        if (userId == null) {
             // 2. 로그인 정보가 없으면 로그인 페이지로 리다이렉트
             String contextPath = request.getContextPath();
             response.sendRedirect(contextPath + "/user/login");
@@ -31,4 +32,3 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     }
 }
-

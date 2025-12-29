@@ -69,7 +69,7 @@ public class UserController {
             session.setAttribute("userName", user.getUserName());
             session.setAttribute("email", user.getEmail());
 
-            return "redirect:/";
+            return "redirect:/main";
 
         } catch (IllegalArgumentException e) {
             // 3. 예외 발생 시 (ID/PW 불일치 등)
