@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shop.user.mapper.user.UserMapper">
+
+    <select id="getUser" resultType="com.example.shop.user.domain.UserVo">
+        SELECT user_id, user_name, email, point
+        FROM tbl_user
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="getUserByLoginId" resultType="com.example.shop.user.domain.UserVo">
+        SELECT user_id, login_id, user_pw, user_name, email, point
+        FROM tbl_user
+        WHERE login_id = #{loginId}
+    </select>
+
+    <select id="findSessionInfoByUserId" resultType="com.example.shop.user.dto.UserSessionDto">
+        SELECT user_id, login_id, user_name, email, point
+        FROM tbl_user
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="findByLoginId" resultType="com.example.shop.user.dto.res.UserLoginResDto">
+        SELECT user_id, login_id, user_name, email, point
+        FROM tbl_user
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="create" parameterType="com.example.shop.user.domain.UserVo">
+        INSERT INTO tbl_user (
+        user_id,
+        login_id,
+        user_pw,
+        user_name,
+        email,
+        point,
+        reg_date
+        ) VALUES (
+        #{userId},
+        #{loginId},
+        #{userPw},
+        #{userName},
+        #{email},
+        #{point},
+        NOW()
+        )
+    </insert>
+</mapper>
